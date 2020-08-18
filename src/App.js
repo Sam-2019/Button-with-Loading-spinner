@@ -14,7 +14,7 @@ const All = () => {
     const uri = "https://jsonplaceholder.typicode.com/users";
     axios.get(uri).then((response) => {
       console.log(response);
-      if (response.status === 400) {
+      if (response.status === 200) {
         console.log(response);
         console.log(response.status);
         setTimeout(() => {
@@ -34,7 +34,7 @@ const All = () => {
           {loading ? <LoadingSpinner /> : "Submit"}
         </button>
       </div>
-      <div className="text-danger">{error}</div>
+      <div className="text-danger">  {error ? `${error}` : ''}</div>
     </div>
   );
 };
