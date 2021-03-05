@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import "./styles.css";
 
-const All = () => {
+export const All = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
@@ -23,6 +23,9 @@ const All = () => {
       } else {
         console.log(response.status);
         setError(response.status);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       }
     });
   };
@@ -34,12 +37,10 @@ const All = () => {
           {loading ? <LoadingSpinner /> : "Submit"}
         </button>
       </div>
-      <div className="text-danger">  {error ? `${error}` : ''}</div>
+      <div className="text-danger">{error}</div>
     </div>
   );
 };
-
-export default All;
 
 const LoadingSpinner = () => (
   <div className="text-center">
@@ -48,3 +49,5 @@ const LoadingSpinner = () => (
     </div>
   </div>
 );
+
+export default All;
